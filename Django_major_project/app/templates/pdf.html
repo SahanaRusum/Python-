@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f9f9f9; /* Optional: Adds a light background */
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .expense-header {
+            text-align: center;
+        }
+
+        .expense-title {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .expense-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .expense-table th,
+        .expense-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .expense-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .expense-footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .btn-print {
+            display: block;
+            margin: 20px auto; /* Centers the button */
+            padding: 10px 20px;
+            background-color: #007bff; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none; /* Removes underline */
+        }
+
+        .btn-print:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="expense-header">
+            <div class="expense-title">
+                <h4>{{ username }}, Your Finance Record</h4>
+            </div>
+        </div>
+        <br>
+
+        <table class="expense-table">
+            <thead>
+                <tr>
+                    <th>Expenses Reason</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.name }}</td>
+                    <td> &#x20B9;{{ expense.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p class="expense-total">Total Expenses: &#x20B9;{{ total_sum }}</p>
+        <div class="expense-footer">
+            <p>Dear {{ username }}, Your Expenses total is &#x20B9;{{ total_sum }}.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
